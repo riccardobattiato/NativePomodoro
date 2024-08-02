@@ -5695,7 +5695,7 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
-react-native-macos@^0.73.0-0:
+react-native-macos@^0.73.34:
   version "0.73.34"
   resolved "https://registry.yarnpkg.com/react-native-macos/-/react-native-macos-0.73.34.tgz#5b3d6d53339f6c231ea0432562425db914a31b63"
   integrity sha512-kh+m+36NwWZ/xjBL3B6n+zEbGG4ynqs3bfiADPI38XDzpbWgKKvoGp66e2htc0J5A/2aRliYDFfKg++wpBx2Qw==
