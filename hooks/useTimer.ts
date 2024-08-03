@@ -3,53 +3,63 @@ import { DateTime, Duration } from 'luxon';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 export const useTimer = (duration: Duration) => {
-  const [dtStart, setDtStart] = useState<DateTime>();
-  const [dtNow, setDtNow] = useState<DateTime>();
+  const [segments, setSegments] = useState<Duration[]>([]); // current run is always first item
   const intervalRef = useRef<NodeJS.Timeout>();
 
-  // A duration object representing remaining time
-  // Note: this is for the user to see, we have to smooth imprecisions out
-  const time = useMemo(() => {
-    if (dtStart && dtNow) {
-      const elapsed = getElapsedTime(dtStart, dtNow);
+  const elapsed = useMemo(
+    () =>
+      segments.reduce(
+        (total, current) => total.plus(current),
+        Duration.fromMillis(0),
+      ),
+    [segments],
+  );
 
-      return duration.minus(elapsed); // remaining time
-    }
-    return duration;
-  }, [dtStart, dtNow, duration]);
+  const time = useMemo(() => duration.minus(elapsed), [duration, elapsed]);
 
   const stop = useCallback(() => {
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
+      intervalRef.current = undefined;
     }
+    // unshift a dummy duration for the interval method to overwrite
+    setSegments(prev => {
+      const zero = Duration.fromMillis(0);
+      if (prev.length === 0) {
+        return [zero];
+      } else if (prev[0].toMillis() !== 0) {
+        return [zero, ...prev];
+      }
+      return prev;
+    });
   }, []);
 
   const reset = useCallback(() => {
     stop();
-    setDtStart(undefined);
-    setDtNow(undefined);
+    setSegments([]);
   }, [stop]);
 
-  const start = () => {
-    setDtStart(DateTime.now());
-    setDtNow(DateTime.now());
+  // we query the OS for actual time difference for accuracy
+  const start = useCallback(() => {
+    const dtStart = DateTime.now();
 
     intervalRef.current = setInterval(() => {
-      const _dtNow = DateTime.now();
-      setDtNow(_dtNow);
+      const dtNow = DateTime.now();
+      const _elapsed = getElapsedTime(dtStart, dtNow);
+
+      setSegments(prev => {
+        const [_, ...rest] = prev;
+        return [_elapsed, ...rest]; // current run is always first item
+      });
     }, 1000);
-  };
+  }, []);
 
   // Stops the timer when done. Here the diff stays accurate
   useEffect(() => {
-    if (dtStart && dtNow) {
-      const diff = dtNow.diff(dtStart);
-
-      if (diff >= duration) {
-        stop();
-      }
+    if (elapsed >= duration) {
+      stop();
     }
-  }, [dtStart, dtNow, duration, stop]);
+  }, [elapsed, duration, stop]);
 
   // Interval cleanup on unmount
   useEffect(() => {
