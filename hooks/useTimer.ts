@@ -41,6 +41,9 @@ export const useTimer = (duration: Duration) => {
 
   // we query the OS for actual time difference for accuracy
   const start = useCallback(() => {
+    if (intervalRef.current) {
+      throw new Error('Cannot start a new timer before stopping the previous');
+    }
     const dtStart = DateTime.now();
 
     intervalRef.current = setInterval(() => {
