@@ -1,4 +1,4 @@
-import { diffRounded } from '@/lib/timer';
+import { getElapsedTime } from '@/lib/timer';
 import { DateTime, Duration } from 'luxon';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
@@ -11,7 +11,7 @@ export const useTimer = (duration: Duration) => {
   // Note: this is for the user to see, we have to smooth imprecisions out
   const time = useMemo(() => {
     if (dtStart && dtNow) {
-      const elapsed = diffRounded(dtStart, dtNow);
+      const elapsed = getElapsedTime(dtStart, dtNow);
 
       return duration.minus(elapsed); // remaining time
     }
