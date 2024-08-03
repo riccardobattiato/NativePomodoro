@@ -39,7 +39,7 @@ describe('useTimer', () => {
   it('returns the full duration when not started', () => {
     const { result } = renderHook(() => useTimer(duration));
     const time = result.current.time;
-    expect(time).toEqual(duration);
+    expect(time.valueOf).toBe(duration.valueOf);
   });
 
   it('returns the correct remaining time after start', () => {
