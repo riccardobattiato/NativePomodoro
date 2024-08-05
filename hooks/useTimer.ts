@@ -1,74 +1,54 @@
-import { getElapsedTime } from '@/lib/timer';
-import { DateTime, Duration } from 'luxon';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { Duration } from 'luxon';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 export const useTimer = (duration: Duration) => {
-  const [segments, setSegments] = useState<Duration[]>([]); // current run is always first item
-  const intervalRef = useRef<NodeJS.Timeout>();
+  const [time, setTime] = useState(duration);
+  const nextAnimationFrame = useRef<number>();
 
-  const elapsed = useMemo(
-    () =>
-      segments.reduce(
-        (total, current) => total.plus(current),
-        Duration.fromMillis(0),
-      ),
-    [segments],
-  );
-
-  const time = useMemo(() => duration.minus(elapsed), [duration, elapsed]);
+  const tick = useCallback((prevTime?: number) => {
+    nextAnimationFrame.current = requestAnimationFrame(timestamp => {
+      if (typeof prevTime === 'number') {
+        const elapsed = timestamp - prevTime;
+        setTime(prev => {
+          const newTime = prev.minus(elapsed);
+          return newTime.valueOf() >= 0 ? newTime : Duration.fromMillis(0);
+        });
+      }
+      tick(timestamp);
+    });
+  }, []);
 
   const stop = useCallback(() => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = undefined;
+    if (nextAnimationFrame.current) {
+      cancelAnimationFrame(nextAnimationFrame.current);
+      nextAnimationFrame.current = undefined;
     }
-    // unshift a dummy duration for the interval method to overwrite
-    setSegments(prev => {
-      const zero = Duration.fromMillis(0);
-      if (prev.length === 0) {
-        return [zero];
-      } else if (prev[0].toMillis() !== 0) {
-        return [zero, ...prev];
-      }
-      return prev;
-    });
   }, []);
 
   const reset = useCallback(() => {
     stop();
-    setSegments([]);
-  }, [stop]);
+    setTime(duration);
+  }, [stop, duration]);
 
-  // we query the OS for actual time difference for accuracy
   const start = useCallback(() => {
-    if (intervalRef.current) {
+    if (nextAnimationFrame.current) {
       throw new Error('Cannot start a new timer before stopping the previous');
     }
-    const dtStart = DateTime.now();
+    nextAnimationFrame.current = requestAnimationFrame(tick);
+  }, [tick]);
 
-    intervalRef.current = setInterval(() => {
-      const dtNow = DateTime.now();
-      const _elapsed = getElapsedTime(dtStart, dtNow);
-
-      setSegments(prev => {
-        const [_, ...rest] = prev;
-        return [_elapsed, ...rest]; // current run is always first item
-      });
-    }, 1000);
-  }, []);
-
-  // Stops the timer when done. Here the diff stays accurate
+  // Stops the timer when done
   useEffect(() => {
-    if (elapsed >= duration) {
+    if (time.toMillis() === 0) {
       stop();
     }
-  }, [elapsed, duration, stop]);
+  }, [time, stop]);
 
   // Interval cleanup on unmount
   useEffect(() => {
     return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
+      if (nextAnimationFrame.current) {
+        cancelAnimationFrame(nextAnimationFrame.current);
       }
     };
   }, []);
