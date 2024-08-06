@@ -5,16 +5,17 @@ export const useTimer = (duration: Duration) => {
   const [time, setTime] = useState(duration);
   const nextAnimationFrame = useRef<number>();
 
-  const tick = useCallback((prevTime?: number) => {
-    nextAnimationFrame.current = requestAnimationFrame(timestamp => {
-      if (typeof prevTime === 'number') {
-        const elapsed = timestamp - prevTime;
+  const tick = useCallback((before?: number) => {
+    nextAnimationFrame.current = requestAnimationFrame(() => {
+      const now = Date.now();
+      if (typeof before === 'number') {
+        const elapsed = now - before;
         setTime(prev => {
           const newTime = prev.minus(elapsed);
           return newTime.valueOf() >= 0 ? newTime : Duration.fromMillis(0);
         });
       }
-      tick(timestamp);
+      tick(now);
     });
   }, []);
 
@@ -34,7 +35,7 @@ export const useTimer = (duration: Duration) => {
     if (nextAnimationFrame.current) {
       throw new Error('Cannot start a new timer before stopping the previous');
     }
-    nextAnimationFrame.current = requestAnimationFrame(tick);
+    tick();
   }, [tick]);
 
   // Stops the timer when done
