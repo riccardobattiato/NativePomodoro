@@ -3,6 +3,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 export const useTimer = (duration: Duration) => {
   const [time, setTime] = useState(duration);
+  const [isRunning, setIsRunning] = useState(false);
   const nextAnimationFrame = useRef<number>();
 
   const tick = useCallback((before?: number) => {
@@ -24,6 +25,7 @@ export const useTimer = (duration: Duration) => {
       cancelAnimationFrame(nextAnimationFrame.current);
       nextAnimationFrame.current = undefined;
     }
+    setIsRunning(false);
   }, []);
 
   const reset = useCallback(() => {
@@ -35,6 +37,7 @@ export const useTimer = (duration: Duration) => {
     if (nextAnimationFrame.current) {
       throw new Error('Cannot start a new timer before stopping the previous');
     }
+    setIsRunning(true);
     tick();
   }, [tick]);
 
@@ -54,5 +57,5 @@ export const useTimer = (duration: Duration) => {
     };
   }, []);
 
-  return { time, start, stop, reset };
+  return { time, isRunning, start, stop, reset };
 };
