@@ -36,8 +36,8 @@ describe('useTimer', () => {
       jest.advanceTimersByTime(30000);
     });
 
-    const time = result.current.time;
-    expect(time.seconds).toBe(-30);
+    const time = result.current.time.valueOf();
+    expect(time).toBe(30000);
   });
 
   it('returns correct remaining time after finishing', () => {
@@ -48,7 +48,7 @@ describe('useTimer', () => {
       jest.advanceTimersByTime(duration.toMillis());
     });
 
-    const time = result.current.time;
-    expect(time.seconds).toBe(-60);
+    const time = result.current.time.valueOf();
+    expect(time).toBe(0);
   });
 });
