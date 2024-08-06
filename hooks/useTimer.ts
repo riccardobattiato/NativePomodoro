@@ -1,7 +1,7 @@
 import { Duration } from 'luxon';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-export const useTimer = (duration: Duration) => {
+export const useTimer = (duration: Duration, callback?: () => void) => {
   const [time, setTime] = useState(duration);
   const [isRunning, setIsRunning] = useState(false);
   const nextAnimationFrame = useRef<number>();
@@ -45,8 +45,9 @@ export const useTimer = (duration: Duration) => {
   useEffect(() => {
     if (time.toMillis() === 0) {
       stop();
+      callback?.();
     }
-  }, [time, stop]);
+  }, [time, stop, callback]);
 
   // Interval cleanup on unmount
   useEffect(() => {
