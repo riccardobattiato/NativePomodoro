@@ -43,11 +43,14 @@ export const useTimer = (duration: Duration, callback?: () => void) => {
 
   // Stops the timer when done
   useEffect(() => {
-    if (time.toMillis() === 0) {
+    if (isRunning && time.toMillis() === 0) {
       stop();
       callback?.();
     }
-  }, [time, stop, callback]);
+  }, [time, isRunning, stop, callback]);
+
+  // If duration is changed from the outside, restart and set
+  useEffect(reset, [reset]);
 
   // Interval cleanup on unmount
   useEffect(() => {
