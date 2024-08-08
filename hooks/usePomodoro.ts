@@ -5,7 +5,7 @@ import { useTimer } from './useTimer';
 import { useCallback, useMemo, useState } from 'react';
 
 const defaultConfig: TConfig = {
-  focus: Duration.fromObject({ seconds: 10 }),
+  focus: Duration.fromObject({ minutes: 25 }),
   shortBreak: Duration.fromObject({ minutes: 5 }),
   longBreak: Duration.fromObject({ minutes: 15 }),
   maxSessions: 4,
