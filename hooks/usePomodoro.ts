@@ -47,5 +47,5 @@ export const usePomodoro = (config = defaultConfig) => {
     setPomodoro(prev => handleNext(prev, config));
   }, [config]);
 
-  return { pomodoro, time, play, skip, restart };
+  return { pomodoro, time, isRunning, play, skip, restart };
 };
