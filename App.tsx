@@ -25,7 +25,7 @@ function App(): React.JSX.Element {
       <View className="flex-[4] justify-center">
         <Timer type={pomodoro.type} value={time} />
       </View>
-      <View className="flex-[2] items-center">
+      <View className="flex-[2] items-center justify-center">
         <Controls isPlaying={isRunning} onPlay={play} onSkip={skip} />
       </View>
       <PortalHost />
