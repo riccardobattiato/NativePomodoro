@@ -1,5 +1,6 @@
 #import "AppDelegate.h"
 
+#import <React/RCTRootView.h>
 #import <React/RCTBundleURLProvider.h>
 
 @implementation AppDelegate
@@ -11,7 +12,23 @@
   // They will be passed down to the ViewController used by React Native.
   self.initialProps = @{};
 
-  return [super applicationDidFinishLaunching:notification];
+  // Call the super method
+  [super applicationDidFinishLaunching:notification];
+
+  // Get the main window
+  NSWindow *window = [[[NSApplication sharedApplication] windows] firstObject];
+
+  // Set the window title
+  window.title = @"Native Pomodoro";
+
+  // Set the window size
+  [window setFrame:NSMakeRect(0, 0, 400, 300) display:YES]; // Position (x, y) and size (width, height)
+
+  // Make the window unresizable by removing the resizable style mask
+  window.styleMask &= ~NSWindowStyleMaskResizable;
+
+  // Ensure the window is displayed
+  [window makeKeyAndOrderFront:nil];
 }
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
@@ -23,11 +40,6 @@
 #endif
 }
 
-/// This method controls whether the `concurrentRoot`feature of React18 is turned on or off.
-///
-/// @see: https://reactjs.org/blog/2022/03/29/react-v18.html
-/// @note: This requires to be rendering on Fabric (i.e. on the New Architecture).
-/// @return: `true` if the `concurrentRoot` feature is enabled. Otherwise, it returns `false`.
 - (BOOL)concurrentRootEnabled
 {
 #ifdef RN_FABRIC_ENABLED
