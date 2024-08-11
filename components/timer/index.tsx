@@ -33,8 +33,8 @@ const Timer = ({ type, value }: Props) => {
         {formatted.split('').map((char, i) => (
           <Text
             key={`char-${i}`}
-            className={cn('text-9xl text-center', {
-              'w-20': char !== ':',
+            className={cn('text-7xl text-center', {
+              'w-12': char !== ':',
             })}>
             {char}
           </Text>

@@ -18,9 +18,9 @@ const Controls = ({ isPlaying = false, onPlay, onSkip }: Props) => {
       <View>
         <Button
           variant={isPlaying ? 'secondary' : 'default'}
-          size="lg"
+          size="icon"
           onPress={onPlay}
-          className="flex-row gap-x-2 w-40">
+          className="flex-row gap-x-2 w-40 macos:w-34">
           {isPlaying ? (
             <Pause className="text-secondary-foreground" />
           ) : (

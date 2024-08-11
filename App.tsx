@@ -18,8 +18,8 @@ function App(): React.JSX.Element {
   const { play, pomodoro, time, isRunning, skip, restart } = usePomodoro();
 
   return (
-    <SafeAreaView className="bg-background h-full p-8">
-      <View className="flex-[2]">
+    <SafeAreaView className="bg-background h-full p-8 macos:p-4">
+      <View className="flex-[2] macos:flex-1">
         <TopBar onReset={restart} />
       </View>
       <View className="flex-[4] justify-center">
