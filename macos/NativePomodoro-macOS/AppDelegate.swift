@@ -27,13 +27,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
           #if DEBUG
              window = NSWindow(
                contentRect: NSRect(x: 0, y: 0, width: 1, height: 1),
-               styleMask: [.titled, .closable, .miniaturizable, .resizable],
+               styleMask: [.titled, .closable],
                backing: .buffered,
                defer: false)
 
              window.contentViewController = rootViewController
              window.center()
-             window.setFrameAutosaveName("Tempomat Main Window")
+             window.setFrameAutosaveName("Native Pomodoro Main Window")
              window.isReleasedWhenClosed = false
              window.makeKeyAndOrderFront(self)
              let screen: NSScreen = NSScreen.main!
