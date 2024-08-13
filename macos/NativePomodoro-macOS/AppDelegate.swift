@@ -112,6 +112,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let content = UNMutableNotificationContent()
         content.title = data.title
         content.body = data.message
+        content.sound = UNNotificationSound.default
         
         let currentDate = Date()
         let formatter = DateFormatter()
