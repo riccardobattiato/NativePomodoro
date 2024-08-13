@@ -6,12 +6,12 @@ import UserNotifications
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
   var windowController: CustomWindowController
-  var statusBarManager: StatusBarManager
+  // var statusBarManager: StatusBarManager
   
   override init() {
     let newWindowController = CustomWindowController()
     self.windowController = newWindowController
-    self.statusBarManager = StatusBarManager(newWindowController: newWindowController)
+    // self.statusBarManager = StatusBarManager(newWindowController: newWindowController)
     super.init()
   }
   
