@@ -8,24 +8,34 @@
 
 /* Begin PBXBuildFile section */
 		3E357AF4F5E359EF88776F54 /* libPods-NativePomodoro-macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A03DE9643FF13AED86FC1A7C /* libPods-NativePomodoro-macOS.a */; };
-		5142014D2437B4B30078DB4F /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5142014C2437B4B30078DB4F /* AppDelegate.mm */; };
 		514201522437B4B40078DB4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 514201512437B4B40078DB4F /* Assets.xcassets */; };
 		514201552437B4B40078DB4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 514201532437B4B40078DB4F /* Main.storyboard */; };
-		514201582437B4B40078DB4F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 514201572437B4B40078DB4F /* main.m */; };
+		8B9381942C69F46900CFFFD6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9381932C69F46900CFFFD6 /* AppDelegate.swift */; };
+		8BB042B62C6A0B440015335D /* CustomWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB042B52C6A0B440015335D /* CustomWindowController.swift */; };
+		8BB042B82C6A0B560015335D /* CustomWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB042B72C6A0B560015335D /* CustomWindow.swift */; };
+		8BB042BA2C6A0B710015335D /* StatusBarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB042B92C6A0B710015335D /* StatusBarManager.swift */; };
+		8BB042BC2C6A0BB10015335D /* EventEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB042BB2C6A0BB10015335D /* EventEmitter.swift */; };
+		8BB042BE2C6A0BC80015335D /* ReactNativeEventEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB042BD2C6A0BC80015335D /* ReactNativeEventEmitter.swift */; };
+		8BB042C02C6A0BE90015335D /* ReactNativeEventEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB042BF2C6A0BE90015335D /* ReactNativeEventEmitter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		13B07F961A680F5B00A75B9A /* NativePomodoro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NativePomodoro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AD625903A3D5006F06FEF34 /* Pods-NativePomodoro-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NativePomodoro-macOS.release.xcconfig"; path = "Target Support Files/Pods-NativePomodoro-macOS/Pods-NativePomodoro-macOS.release.xcconfig"; sourceTree = "<group>"; };
 		514201492437B4B30078DB4F /* NativePomodoro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NativePomodoro.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5142014B2437B4B30078DB4F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		5142014C2437B4B30078DB4F /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		514201512437B4B40078DB4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		514201542437B4B40078DB4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		514201562437B4B40078DB4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		514201572437B4B40078DB4F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		514201592437B4B40078DB4F /* NativePomodoro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NativePomodoro.entitlements; sourceTree = "<group>"; };
 		844FCD5CA2088C4EEE264A45 /* Pods-NativePomodoro-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NativePomodoro-macOS.debug.xcconfig"; path = "Target Support Files/Pods-NativePomodoro-macOS/Pods-NativePomodoro-macOS.debug.xcconfig"; sourceTree = "<group>"; };
+		8B9381922C69F46900CFFFD6 /* NativePomodoro-macOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NativePomodoro-macOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		8B9381932C69F46900CFFFD6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8BB042B52C6A0B440015335D /* CustomWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWindowController.swift; sourceTree = "<group>"; };
+		8BB042B72C6A0B560015335D /* CustomWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWindow.swift; sourceTree = "<group>"; };
+		8BB042B92C6A0B710015335D /* StatusBarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarManager.swift; sourceTree = "<group>"; };
+		8BB042BB2C6A0BB10015335D /* EventEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEmitter.swift; sourceTree = "<group>"; };
+		8BB042BD2C6A0BC80015335D /* ReactNativeEventEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactNativeEventEmitter.swift; sourceTree = "<group>"; };
+		8BB042BF2C6A0BE90015335D /* ReactNativeEventEmitter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReactNativeEventEmitter.m; sourceTree = "<group>"; };
 		A03DE9643FF13AED86FC1A7C /* libPods-NativePomodoro-macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NativePomodoro-macOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -61,13 +71,18 @@
 		5142014A2437B4B30078DB4F /* NativePomodoro-macOS */ = {
 			isa = PBXGroup;
 			children = (
-				5142014B2437B4B30078DB4F /* AppDelegate.h */,
-				5142014C2437B4B30078DB4F /* AppDelegate.mm */,
 				514201512437B4B40078DB4F /* Assets.xcassets */,
 				514201532437B4B40078DB4F /* Main.storyboard */,
 				514201562437B4B40078DB4F /* Info.plist */,
-				514201572437B4B40078DB4F /* main.m */,
 				514201592437B4B40078DB4F /* NativePomodoro.entitlements */,
+				8B9381932C69F46900CFFFD6 /* AppDelegate.swift */,
+				8B9381922C69F46900CFFFD6 /* NativePomodoro-macOS-Bridging-Header.h */,
+				8BB042B52C6A0B440015335D /* CustomWindowController.swift */,
+				8BB042B72C6A0B560015335D /* CustomWindow.swift */,
+				8BB042B92C6A0B710015335D /* StatusBarManager.swift */,
+				8BB042BB2C6A0BB10015335D /* EventEmitter.swift */,
+				8BB042BD2C6A0BC80015335D /* ReactNativeEventEmitter.swift */,
+				8BB042BF2C6A0BE90015335D /* ReactNativeEventEmitter.m */,
 			);
 			path = "NativePomodoro-macOS";
 			sourceTree = "<group>";
@@ -108,7 +123,6 @@
 				844FCD5CA2088C4EEE264A45 /* Pods-NativePomodoro-macOS.debug.xcconfig */,
 				4AD625903A3D5006F06FEF34 /* Pods-NativePomodoro-macOS.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -166,6 +180,7 @@
 					};
 					514201482437B4B30078DB4F = {
 						CreatedOnToolsVersion = 11.4;
+						LastSwiftMigration = 1540;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -270,10 +285,12 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-NativePomodoro-macOS/Pods-NativePomodoro-macOS-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/RNCAsyncStorage/RNCAsyncStorage_resources.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/RCTI18nStrings.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RNCAsyncStorage_resources.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RCTI18nStrings.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,8 +312,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				514201582437B4B40078DB4F /* main.m in Sources */,
-				5142014D2437B4B30078DB4F /* AppDelegate.mm in Sources */,
+				8BB042B62C6A0B440015335D /* CustomWindowController.swift in Sources */,
+				8BB042BA2C6A0B710015335D /* StatusBarManager.swift in Sources */,
+				8BB042BE2C6A0BC80015335D /* ReactNativeEventEmitter.swift in Sources */,
+				8B9381942C69F46900CFFFD6 /* AppDelegate.swift in Sources */,
+				8BB042C02C6A0BE90015335D /* ReactNativeEventEmitter.m in Sources */,
+				8BB042BC2C6A0BB10015335D /* EventEmitter.swift in Sources */,
+				8BB042B82C6A0B560015335D /* CustomWindow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,8 +387,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				INFOPLIST_FILE = "NativePomodoro-macos/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Native Pomodoro";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -375,6 +398,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = NativePomodoro;
 				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "NativePomodoro-macOS/NativePomodoro-macOS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
@@ -388,8 +413,9 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = "NativePomodoro-macos/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Native Pomodoro";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -398,6 +424,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = NativePomodoro;
 				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "NativePomodoro-macOS/NativePomodoro-macOS-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -460,10 +487,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_CPLUSPLUSFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = false;
@@ -520,10 +544,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_CPLUSPLUSFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = false;
