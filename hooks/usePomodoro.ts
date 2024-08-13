@@ -47,8 +47,12 @@ export const usePomodoro = (config = defaultConfig) => {
   }, [isRunning, start, stop]);
 
   const skip = useCallback(() => {
-    setPomodoro(prev => handleNext(prev, config));
-  }, [config]);
+    if (pomodoro.type === SessionType.LONG_BREAK) {
+      restart();
+    } else {
+      setPomodoro(handleNext(pomodoro, config));
+    }
+  }, [pomodoro, restart, config]);
 
   return { pomodoro, time, isRunning, play, skip, restart };
 };
